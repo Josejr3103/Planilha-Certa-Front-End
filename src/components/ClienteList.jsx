@@ -88,7 +88,7 @@ function ClienteList() {
   return (
     <>
    
-    <div className='container'>
+    <div className='containere'>
    
     <div >
        <h2 className='titulo'>Lista de Usuários</h2>
@@ -104,14 +104,20 @@ function ClienteList() {
                   <div className="modal-content">
 
 
-                    <h3>Editar Cliente</h3>
+                    <h3>Edição de Cliente</h3>
+                    <div class="group">
                     <input
-                      className='inputs'
+                      className='input'
                       type="text"
                       value={nomeEditado}
                       onChange={(e) => setNomeEditado(e.target.value)}
-                      placeholder="Nome do Cliente"
+                   
                     />
+                  <span class="highlight"></span>
+                 <span class="bar"></span>
+                <label>Nome do Cliente</label>
+                  </div>
+                   
                     <select
                       className='inputs'
                       value={categoriaEditada}
@@ -120,8 +126,11 @@ function ClienteList() {
                       <option value="Padrão">Padrão</option>
                       <option value="Vip">Vip</option>
                     </select>
-                    <button className='botao-modal' onClick={confirmarEdicao}>Salvar  </button>
-                    <button onClick={cancelarEdicao}>Cancelar</button>
+                    <div className='botoes'>
+                   
+                    <button className='buttono-modal' onClick={cancelarEdicao}>Cancelar</button>
+                    <button className='button-modal' onClick={confirmarEdicao}>Salvar  </button>
+                    </div>
                   </div>
                 </div>
               ) : (

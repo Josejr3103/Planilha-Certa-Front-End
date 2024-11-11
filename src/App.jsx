@@ -5,13 +5,14 @@ import ClienteList from './components/ClienteList';
 import CadastrarProjeto from './components/CadastrarProjeto';
 import ListarProjetos from './components/ListarProjetos';
 import DashboardClientes from './dashboards/DashboardClientes';
-
+import DashboardPrincipal from './dashboards/DashboardPrincipal';
 function App() {
   return (
     <Router>
       <div className="containere">
         <Routes>
-          <Route path="/" element={<DashboardClientes />} />
+        <Route path="/" element={<DashboardPrincipal />} />
+          <Route path="/dashboard/clientes" element={<DashboardClientes />} />
           <Route path="/clientes/cadastro" element={<ClienteForm />} />
           <Route path="/clientes/lista" element={<ClienteList />} />
           <Route path="/projetos/cadastro" element={<CadastrarProjeto />} />
