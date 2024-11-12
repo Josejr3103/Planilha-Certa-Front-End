@@ -1,40 +1,70 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { cadastrarConsultorFinanceiro, cadastrarConsultorGestao, cadastrarConsultorTI } from "../api/consultorApi";
 
-function ConsultorForm() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const navigate = useNavigate();
+const ConsultorForm = () => {
+  const [nome, setNome] = useState("");
+  const [especializacao, setEspecializacao] = useState("");
+  const [error, setError] = useState("");
 
-  const handleCadastro = () => {
-    const novoConsultor = { nome, email };
-    const consultoresExistentes = JSON.parse(localStorage.getItem('consultores')) || [];
-    consultoresExistentes.push(novoConsultor);
-    localStorage.setItem('consultores', JSON.stringify(consultoresExistentes));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    setNome('');
-    setEmail('');
-    navigate('/consultor/lista');
+    if (!nome || !especializacao) {
+      setError("Todos os campos são obrigatórios!");
+      return;
+    }
+
+    const consultor = { nomeConsultor: nome, especializacao };
+
+    try {
+      if (especializacao === "Financeiro") {
+        await cadastrarConsultorFinanceiro(consultor);
+      } else if (especializacao === "Gestao") {
+        await cadastrarConsultorGestao(consultor);
+      } else if (especializacao === "TI") {
+        await cadastrarConsultorTI(consultor);
+      }
+      setError("");
+      setNome("");  
+      setEspecializacao(""); 
+      alert("Consultor cadastrado com sucesso!");
+    } catch (err) {
+      setError("Erro ao cadastrar consultor");
+    }
   };
 
   return (
-    <div>
-      <h2>Cadastrar Consultor</h2>
-      <input
-        type="text"
-        placeholder="Nome"
-        value={nome}
-        onChange={(e) => setNome(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button onClick={handleCadastro}>Cadastrar</button>
+    <div className="containere">
+      <form className="form" onSubmit={handleSubmit}>
+      <p className="titlee">Cadastro de Consultor</p>
+        <div>
+         
+          <input
+          placeholder="Nome do Consultor"
+          className="inputs"
+            type="text"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
+        <div>
+         
+          <select
+          className="inputaa"
+            value={especializacao}
+            onChange={(e) => setEspecializacao(e.target.value)}
+          >
+            
+            <option value="Financeiro">Financeiro</option>
+            <option value="Gestão">Gestão</option>
+            <option value="TI">TI</option>
+          </select>
+        </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <button className="buttona" type="submit">Cadastrar</button>
+      </form>
     </div>
   );
-}
+};
 
 export default ConsultorForm;

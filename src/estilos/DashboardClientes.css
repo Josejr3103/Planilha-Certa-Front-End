@@ -21,7 +21,7 @@ html, body {
     min-height: 100vh;
     min-width: 100%;
     --angle: 45deg; 
-    background: #2e2e2e;
+    background: linear-gradient(to right, #434343 0%, black 100%);
     justify-content: center; 
     align-items: center;
     margin: 0 auto;
@@ -116,7 +116,7 @@ html, body {
   position: relative;
   background-color: #212121;
   color: #fff;
-  border: 1px solid #000000;
+  border: 1px solid #a0a0a0;
 }
 span{
   font-weight: bold;
@@ -538,7 +538,7 @@ flex-direction: initial;
   margin-right: 50px;
   margin-bottom: 50px;
   margin-top: 50px;
-   background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+  background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
   padding: 40px;
   border-radius: 20px;
   }.pa{
@@ -737,6 +737,105 @@ font-size: 35px;
  .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
  }
+
+
+ .titlee {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #51ff00;
+}
+
+.titlee::before {
+  width: 18px;
+  height: 18px;
+}
+
+.titlee::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.titlee::before,
+.titlee::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #51ff00;
+}
+
+.buttona {
+  margin-top: 20px;
+  display: flex;
+  margin-left: 20%;
+  align-items: center;
+  justify-content: center;
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge #51ff00;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttona::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #212121;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+.buttona::before {
+  content: "";
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #212121;
+  transition: 0.5s;
+}
+
+.buttona:hover::before, button:hover::after {
+  transform: scale(0)
+}
+
+.buttona:hover {
+  box-shadow: inset 0px 0px 25px #51ff00;
+}
+.inputaa {
+  width: 94%;
+  font-size: medium;
+  margin-top: 10px;
+  border-radius:15px;
+  padding: 15px;
+  outline: none;
+  background-color: #333;
+  border: none;
+  color: rgba(245, 245, 245, 0.425);
+  
+}
  
  
  @keyframes inputHighlighter {
