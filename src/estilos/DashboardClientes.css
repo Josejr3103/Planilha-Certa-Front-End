@@ -258,6 +258,14 @@ span{
 
 .inputa {
   font-size: medium;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 15px;
+  outline: none;
+  background-color: #333;
+  border: none;
+  color: rgba(245, 245, 245, 0.425);
+  
 }
 
 
@@ -729,6 +737,7 @@ font-size: 35px;
  .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
  }
+ 
  
  @keyframes inputHighlighter {
   from {

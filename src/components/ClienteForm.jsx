@@ -26,46 +26,45 @@ function ClienteForm() {
   return (
     <div className='containere'>
 
-<form class="form">
+<form className="form">
 
 
   
-    <p class="title">Cadastro de Cliente </p>
+    <p className="title">Cadastro de Cliente </p>
    
-        <div class="flex">
+        <div className="flex">
        
     </div>  
             
-    <label>
+    
     <input
-    className='input'
+    className='inputs'
         type="text"
         placeholder="Nome do Cliente"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
       />
-        <span>Nome do Cliente</span>
-    </label> 
+    
         
-    <label>
+   
     <input
-    className='input'
+            className='inputs'
         type="text"
         placeholder="Contato"
         value={contato}
         onChange={(e) => setContato(e.target.value)}
       />
-        <span>Contato</span>
-    </label>
-    <label>
+        
+   
+   
     <select
     className='inputa'
      value={categoria} onChange={(e) => setCategoria(e.target.value)}>
         <option value="Padrão">Padrão</option>
         <option value="Vip">Vip</option>
       </select>
-        <span>Categoria</span>
-    </label>
+ 
+  
     <button className='button' onClick={handleCadastro}>Cadastrar</button>
 
 </form>
