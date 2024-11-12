@@ -49,7 +49,7 @@ function ClienteForm() {
         
     <label>
     <input
-            className='input'
+    className='input'
         type="text"
         placeholder="Contato"
         value={contato}
