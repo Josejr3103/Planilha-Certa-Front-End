@@ -422,7 +422,7 @@ h3{
   height: 50px;
   border: none;
   padding: 0px 20px;
-  background-color: rgb(67, 0, 112);
+  background-color: rgb(18, 127, 155);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -836,18 +836,114 @@ font-size: 35px;
   color: rgba(245, 245, 245, 0.425);
   
 }
+
+
+
+table {
+  font-weight: bold;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+th {
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 4px solid #afcaf7;
+}
+
+
+td {
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #555555;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+
+tr:nth-child(even) {
+  background-color: #f7faff;
+}
+
+
+tr:hover {
+  background-color: #e3f2fd;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+td.acao {
+  padding: 8px 16px;
+  text-align: center;
+}
+
+
+tr.acao {
+  background-color: #f0f4f8;
+}
+
+
+
+
+.svg-icon {
+  width: 22px;
+  height: 22px;
+  fill: #4a90e2;
+  transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+
+button:hover {
+
+  transform: scale(1.1);
+}
+
+button:hover .svg-icon {
  
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.titulo {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
  
- @keyframes inputHighlighter {
-  from {
-   background: #5264AE;
-  }
- 
-  to {
-   width: 0;
-   background: transparent;
-  }
- }
+
 
 
 @keyframes pulse {

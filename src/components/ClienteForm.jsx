@@ -28,10 +28,8 @@ function ClienteForm() {
   };
 
   return (
-    <div className='containere'>
-       <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className='container'>
+     
       <form className="form" onSubmit={handleCadastro}>
         <p className="title">Cadastro de Cliente</p>
 
