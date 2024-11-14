@@ -15,7 +15,9 @@ function DashboardPrincipal() {
     const handleDashboardConsultor= () => {
         navigate("/dashboard/consultor");
     }
-
+     const handleDashboardContrato=()=>{
+        navigate("/dashboard/contrato")
+     }
  
 
 
@@ -33,6 +35,11 @@ function DashboardPrincipal() {
 
 <div class="card">
       <div onClick={handleDashboardConsultor}class="bg"> <img  className="fotografia" src={consultor} alt="Cadastro de Clientes" srcset="" /></div>
+    <div class="blob"></div>
+</div>
+
+<div class="card">
+      <div onClick={handleDashboardContrato}class="bg"> <img  className="fotografia" src={consultor} alt="Cadastro de Clientes" srcset="" /></div>
     <div class="blob"></div>
 </div>
 

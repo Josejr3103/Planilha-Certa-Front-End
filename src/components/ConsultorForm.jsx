@@ -19,7 +19,7 @@ const ConsultorForm = () => {
     try {
       if (especializacao === "Financeiro") {
         await cadastrarConsultorFinanceiro(consultor);
-      } else if (especializacao === "Gestao") {
+      } else if (especializacao === "Gestão") {
         await cadastrarConsultorGestao(consultor);
       } else if (especializacao === "TI") {
         await cadastrarConsultorTI(consultor);
@@ -54,7 +54,7 @@ const ConsultorForm = () => {
             value={especializacao}
             onChange={(e) => setEspecializacao(e.target.value)}
           >
-            
+            <option value="">Selecione</option>
             <option value="Financeiro">Financeiro</option>
             <option value="Gestão">Gestão</option>
             <option value="TI">TI</option>

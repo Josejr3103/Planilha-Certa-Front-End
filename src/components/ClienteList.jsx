@@ -123,6 +123,7 @@ function ClienteList() {
                       value={categoriaEditada}
                       onChange={(e) => setCategoriaEditada(e.target.value)}
                     >
+                      <option value="">Selecione</option>
                       <option value="Padrão">Padrão</option>
                       <option value="Vip">Vip</option>
                     </select>

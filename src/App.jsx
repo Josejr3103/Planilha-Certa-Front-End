@@ -9,7 +9,9 @@ import DashboardPrincipal from './dashboards/DashboardPrincipal';
 import ConsultorForm from './components/ConsultorForm';
 import ConsultorList from './components/ConsultorList';
 import DashboardConsultor from './dashboards/DashboardConsultor';
-
+import ContratoList from './components/ContratoList';
+import ContratoForm from './components/ContratoForm';
+import DashboardContrato from './dashboards/DashboardContrato';
 function App() {
   return (
     <Router>
@@ -24,6 +26,11 @@ function App() {
           <Route path="/consultor/cadastro" element={<ConsultorForm />} />
           <Route path="/consultor/lista" element={<ConsultorList />} />
           <Route path="/dashboard/consultor" element={<DashboardConsultor />} />
+          <Route path="/dashboard/contrato" element={<DashboardContrato />} />
+          <Route path="/contrato/cadastro" element={<ContratoForm />} />
+          <Route path="/contrato/lista" element={<ContratoList />} />
+
+
         </Routes>
       </div>
     </Router>
