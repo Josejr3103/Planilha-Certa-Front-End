@@ -9,7 +9,7 @@ html, body {
     display: flex;
     min-height: 100vh; 
     min-width: 100%;
-    background: #E0E0E0;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -114,7 +114,7 @@ html, body {
   padding: 160px;
   border-radius: 40px;
   position: relative;
-  background-color: #212121;
+  background-color: #2e2e2e;
   color: #fff;
   border: 1px solid #a0a0a0;
 }
@@ -187,7 +187,7 @@ span{
 }
 
 .form label .input {
-  background-color: #333;
+  background-color: #2e2e2e;
   color: #fff;
   width: 100%;
   padding: 20px 05px 05px 10px;
@@ -224,7 +224,7 @@ span{
 }
 
 .form label .inputa {
-  background-color: #333;
+  background-color: #2e2e2e;
   color: #fff;
   width: 106%;
   padding: 20px 05px 05px 10px;
@@ -234,7 +234,7 @@ span{
 }
 
 .form label .inputa + span {
-  color: rgba(255, 255, 255, 0.5);
+  color: #2e2e2e;
   position: absolute;
   left: 10px;
   top: 0px;
@@ -297,7 +297,7 @@ span{
   left: 3%;
   width: 95%;
   height: 40%;
-  background-color: #212121;
+  background-color: #2e2e2e;
   transition: 0.5s;
   transform-origin: center;
 }
@@ -310,7 +310,7 @@ span{
   left: 3%;
   width: 95%;
   height: 40%;
-  background-color: #212121;
+  background-color: #2e2e2e;
   transition: 0.5s;
 }
 
@@ -800,7 +800,7 @@ font-size: 35px;
   left: 3%;
   width: 95%;
   height: 40%;
-  background-color: #212121;
+  background-color: #2e2e2e;
   transition: 0.5s;
   transform-origin: center;
 }
@@ -813,7 +813,7 @@ font-size: 35px;
   left: 3%;
   width: 95%;
   height: 40%;
-  background-color: #212121;
+  background-color: #2e2e2e;
   transition: 0.5s;
 }
 
@@ -835,6 +835,88 @@ font-size: 35px;
   border: none;
   color: rgba(245, 245, 245, 0.425);
   
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #999999;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333333;
+  font-weight: bold;
+}
+
+.modal-button {
+  margin: 10px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.modal-button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f8a);
+  transform: translateY(-3px) scale(1.05); 
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+.modal-close {
+  margin-top: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+}
+
+.modal-close:hover {
+  background: linear-gradient(135deg, #cc0000, #990000);
+  transform: translateY(-3px) scale(1.05); 
+  box-shadow: 0 6px 15px rgba(255, 77, 77, 0.4);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 

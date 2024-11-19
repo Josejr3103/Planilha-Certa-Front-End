@@ -1,20 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { cadastrarConsultorFinanceiro, cadastrarConsultorGestao, cadastrarConsultorTI } from "../api/consultorApi";
-import ContratoForm from "./ContratoForm";
 import { useNavigate } from "react-router-dom";
-
-
 
 const ConsultorForm = () => {
   const [nome, setNome] = useState("");
   const [especializacao, setEspecializacao] = useState("");
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
-
-  const handleContratoForm = () => {
-      navigate("/contrato/cadastro");
-  };
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +15,6 @@ const ConsultorForm = () => {
       setError("Todos os campos são obrigatórios!");
       return;
     }
-  
 
     const consultor = { nomeConsultor: nome, especializacao };
 
@@ -35,33 +26,36 @@ const ConsultorForm = () => {
       } else if (especializacao === "TI") {
         await cadastrarConsultorTI(consultor);
       }
-      setError("");
+
+      setError("");  
       setNome("");  
       setEspecializacao(""); 
       alert("Consultor cadastrado com sucesso!");
+
+ 
+      navigate("/contrato/cadastro");
+
     } catch (err) {
       setError("Erro ao cadastrar consultor");
     }
   };
 
   return (
-    <div className="containere">
+    <div className="container">
       <form className="form" onSubmit={handleSubmit}>
-      <p className="titlee">Cadastro de Consultor</p>
+        <p className="titlee">Cadastro de Consultor</p>
         <div>
-         
           <input
-          placeholder="Nome do Consultor"
-          className="inputs"
+            placeholder="Nome do Consultor"
+            className="inputs"
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
           />
         </div>
         <div>
-         
           <select
-          className="inputaa"
+            className="inputaa"
             value={especializacao}
             onChange={(e) => setEspecializacao(e.target.value)}
           >
@@ -72,7 +66,7 @@ const ConsultorForm = () => {
           </select>
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button onClick={handleContratoForm} className="buttona" type="submit">Cadastrar</button>
+        <button className="buttona" type="submit">Cadastrar</button>
       </form>
     </div>
   );

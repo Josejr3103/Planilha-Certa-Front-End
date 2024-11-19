@@ -1,18 +1,17 @@
-
-import React, { useState } from 'react';
-import { cadastrarContratoAlta, cadastrarContratoBaixa } from '../services/ContratoService';
+import React, { useState } from "react"; 
+import { cadastrarContratoAlta, cadastrarContratoBaixa } from "../services/ContratoService";
+import { useNavigate } from "react-router-dom";  
 
 const ContratoForm = () => {
-  const [cpfCliente, setCpfCliente] = useState('');
-  const [valorServico, setValorServico] = useState('');
-  const [prioridadeAtendimento, setPrioridadeAtendimento] = useState('Alta');
+  const [cpfCliente, setCpfCliente] = useState("");
+  const [valorServico, setValorServico] = useState("");
+  const [prioridadeAtendimento, setPrioridadeAtendimento] = useState("Alta");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const navigate = useNavigate();  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
 
     const contrato = {
       cpfCliente,
@@ -22,63 +21,64 @@ const ContratoForm = () => {
     };
 
     try {
-      let response;
-      if (prioridadeAtendimento === 'Alta') {
-        response = await cadastrarContratoAlta(contrato);
+      if (prioridadeAtendimento === "Alta") {
+        await cadastrarContratoAlta(contrato);
+        alert("Contrato de Alta Prioridade cadastrado com sucesso!");
       } else {
-        response = await cadastrarContratoBaixa(contrato);
+        await cadastrarContratoBaixa(contrato);
+        alert("Contrato de Baixa Prioridade cadastrado com sucesso!");
       }
 
-      if (response) {
-        alert('Contrato cadastrado com sucesso!');
- 
-        setCpfCliente('');
-        setValorServico('');
-      }
+      setCpfCliente("");
+      setValorServico("");
+      setPrioridadeAtendimento("Alta");
+
+      navigate("/projetos/cadastro");
+
     } catch (err) {
-      setError('Erro ao cadastrar contrato. Tente novamente.');
+      console.error("Erro ao cadastrar contrato:", err);
+      alert("Erro ao cadastrar contrato!");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div>
-      <h2>Cadastrar Contrato</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>CPF Cliente:</label>
-          <input
-            type="text"
-            value={cpfCliente}
-            onChange={(e) => setCpfCliente(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Valor do Serviço:</label>
-          <input
-            type="number"
-            value={valorServico}
-            onChange={(e) => setValorServico(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Prioridade de Atendimento:</label>
-          <select
-            value={prioridadeAtendimento}
-            onChange={(e) => setPrioridadeAtendimento(e.target.value)}
-          >
-            <option value="Alta">Alta</option>
-            <option value="Baixa">Baixa</option>
-          </select>
-        </div>
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Cadastrando...' : 'Cadastrar Contrato'}
+    <div className="container">
+      <form className="form" onSubmit={handleSubmit}>
+        <p className="title">Cadastrar Contrato</p>
+
+        <input
+          className="inputs"
+          type="text"
+          placeholder="CPF do Cliente"
+          value={cpfCliente}
+          onChange={(e) => setCpfCliente(e.target.value)}
+          required
+        />
+
+        <input
+          className="inputs"
+          type="number"
+          placeholder="Valor do Serviço"
+          value={valorServico}
+          onChange={(e) => setValorServico(e.target.value)}
+          required
+        />
+
+        <select
+          className="inputa"
+          value={prioridadeAtendimento}
+          onChange={(e) => setPrioridadeAtendimento(e.target.value)}
+        >
+          <option value="Alta">Alta</option>
+          <option value="Baixa">Baixa</option>
+        </select>
+
+        <button type="submit" className="button" disabled={isSubmitting}>
+          {isSubmitting ? "Cadastrando..." : "Cadastrar Contrato"}
         </button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 };

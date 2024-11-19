@@ -87,12 +87,13 @@ const EtapasList = () => {
                 
 
                 <td>
-                  <button onClick={() => handleEditarImplementacao(etapa.idEtapa)}>
+                  <button  onClick={() => handleEditarImplementacao(etapa.idEtapa)}>
                     Implementação
                   </button>
                   <button onClick={() => handleEditarRevisaoFinal(etapa.idEtapa)}>
                     Revisão Final
                   </button>
+                  <br />
                   <button onClick={() => handleEditarConclusao(etapa.idEtapa)}>
                     Conclusão
                   </button>
