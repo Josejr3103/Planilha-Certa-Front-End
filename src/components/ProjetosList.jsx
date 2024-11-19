@@ -75,7 +75,7 @@ function ProjetosList() {
   return (
     <>
       <div className='container'>
-        <h2 className='titulo'>Lista de Projetos</h2>
+       
 
         {projetos.length > 0 ? (
           <table className='tabela-projetos'>

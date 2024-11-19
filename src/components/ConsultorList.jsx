@@ -62,7 +62,7 @@ const ConsultorList = () => {
   return (
     <div className='container'>
       
-        <h2 className='titulo'>Lista de Consultores</h2>
+     
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         {consultores.length > 0 ? (

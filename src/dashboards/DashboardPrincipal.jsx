@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import clientes from '../assets/clientes.png'
 import consultor from '../assets/Consultor.png'
+import relatorio from '../assets/relatorio.png'
 function DashboardPrincipal() {
 
 
@@ -25,7 +26,7 @@ function DashboardPrincipal() {
         navigate("/dashboard/etapas")
      }
      const handleDashboardRelatorio=()=>{
-        navigate("/dashboard/relatorio")
+        navigate("/relatorio/lista")
      }
  
  
@@ -50,7 +51,7 @@ function DashboardPrincipal() {
 
 
 <div class="card">
-      <div onClick={handleDashboardRelatorio}class="bg"> <img  className="fotografia" src={clientes} alt="Cadastro de Clientes" srcset="" /></div>
+      <div onClick={handleDashboardRelatorio}class="bg"> <img  className="fotografia" src={relatorio} alt="Cadastro de Clientes" srcset="" /></div>
     <div class="blob"></div>
 </div>
 

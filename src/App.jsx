@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ClienteForm from './components/ClienteForm';
 import ClienteList from './components/ClienteList';
-
+import Navbar from './components/Navbar';
 import DashboardClientes from './dashboards/DashboardClientes';
 import DashboardPrincipal from './dashboards/DashboardPrincipal';
 import ConsultorForm from './components/ConsultorForm';
@@ -21,7 +21,10 @@ import DashboardRelatorio from './dashboards/DashboardRelatorio';
 import RelatorioList from './components/RelatorioList';
 function App() {
   return (
+   
+    
     <Router>
+    <Navbar/>
       <div className="containere">
         <Routes>
           <Route path="/" element={<DashboardPrincipal />} />
@@ -51,6 +54,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+
   );
 }
 

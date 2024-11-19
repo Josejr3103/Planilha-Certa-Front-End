@@ -83,7 +83,7 @@ function ClienteList() {
 
   return (
     <div className='container'>
-      <h2 className='titulo'>Lista de Usuários</h2>
+
 
       {clientes.length > 0 ? (
         <table className='tabela-clientes'>

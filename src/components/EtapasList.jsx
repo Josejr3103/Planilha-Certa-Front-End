@@ -52,6 +52,7 @@ const EtapasList = () => {
   }, []);
 
   return (
+    <>
     <div className="container">
   
       <table border="1">
@@ -103,7 +104,7 @@ const EtapasList = () => {
           )}
         </tbody>
       </table>
-    </div>
+    </div></>
   );
 };
 
