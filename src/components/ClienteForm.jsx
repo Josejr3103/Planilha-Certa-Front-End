@@ -1,59 +1,80 @@
-import React, { useState } from 'react';
-import { cadastrarClientePadrao, cadastrarClienteVip } from '../services/clienteService';
+import React, { useState } from "react";
+import ClienteService from "../services/ClienteService";
 
 function ClienteForm() {
-  const [nome, setNome] = useState('');
-  const [categoria, setCategoria] = useState('');
-  const [contato, setContato] = useState('');
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [categoria, setCategoria] = useState("padrao");
+  const [historico, setHistorico] = useState("");
+  const [pontos, setPontos] = useState(0);
 
-  const handleCadastro = async (event) => {
-    event.preventDefault(); 
-    const cliente = { nomeCliente: nome, contatoCliente: contato };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const cliente = {
+      nomeCliente: nome,
+      cpfCliente: cpf,
+      categoriaCliente: categoria,
+      historicoContratos: historico,
+      pontos: parseInt(pontos),
+    };
 
     try {
-      if (categoria === 'Padrão') {
-        await cadastrarClientePadrao(cliente);
-        alert('Cliente padrão cadastrado com sucesso!');
-      } else {
-        await cadastrarClienteVip(cliente);
-        alert('Cliente VIP cadastrado com sucesso!');
+      if (categoria === "padrao") {
+        await ClienteService.cadastrarClientePadrao(cliente);
+        alert("Cliente Padrão cadastrado com sucesso!");
+      } else if (categoria === "vip") {
+        await ClienteService.cadastrarClienteVip(cliente);
+        alert("Cliente VIP cadastrado com sucesso!");
       }
-   
-      setNome('');
-      setContato('');
+
+      setNome("");
+      setCpf("");
+      setHistorico("");
+      setPontos(0);
+      setCategoria("padrao");
+      
     } catch (error) {
-      alert('Erro ao cadastrar cliente!');
-      console.error(error);
+      console.error("Erro ao cadastrar cliente:", error);
+      alert("Erro ao cadastrar cliente!");
     }
   };
 
   return (
-    <div className='container'>
-     
-      <form className="form" onSubmit={handleCadastro}>
+    <div className="container">
+      <form className="form" onSubmit={handleSubmit}>
         <p className="title">Cadastro de Cliente</p>
-
+        
         <input
-          className='inputs'
+          className="inputs"
           type="text"
           placeholder="Nome do Cliente"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          required
         />
 
-  
+        <input
+          className="inputs"
+          type="text"
+          placeholder="CPF do Cliente"
+          value={cpf}
+          onChange={(e) => setCpf(e.target.value)}
+          required
+        />
 
         <select
-          className='inputa'
+          className="inputa"
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
         >
-          <option value="">Selecione</option>
-          <option value="Padrão">Padrão</option>
-          <option value="Vip">Vip</option>
+          <option value="padrao">Padrão</option>
+          <option value="vip">Vip</option>
         </select>
 
-        <button type="submit" className='button'>Cadastrar</button>
+     
+
+        <button type="submit" className="button">Cadastrar Cliente</button>
       </form>
     </div>
   );

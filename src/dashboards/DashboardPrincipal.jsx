@@ -18,6 +18,16 @@ function DashboardPrincipal() {
      const handleDashboardContrato=()=>{
         navigate("/dashboard/contrato")
      }
+     const handleDashboardProjetos=()=>{
+        navigate("/dashboard/projetos")
+     }
+     const handleDashboardEtapas=()=>{
+        navigate("/dashboard/etapas")
+     }
+     const handleDashboardRelatorio=()=>{
+        navigate("/dashboard/relatorio")
+     }
+ 
  
 
 
@@ -40,6 +50,19 @@ function DashboardPrincipal() {
 
 <div class="card">
       <div onClick={handleDashboardContrato}class="bg"> <img  className="fotografia" src={consultor} alt="Cadastro de Clientes" srcset="" /></div>
+    <div class="blob"></div>
+</div>
+
+<div class="card">
+      <div onClick={handleDashboardProjetos}class="bg"> <img  className="fotografia" src={clientes} alt="Cadastro de Clientes" srcset="" /></div>
+    <div class="blob"></div>
+</div> 
+<div class="card">
+      <div onClick={handleDashboardEtapas}class="bg"> <img  className="fotografia" src={consultor} alt="Cadastro de Clientes" srcset="" /></div>
+    <div class="blob"></div>
+</div>
+<div class="card">
+      <div onClick={handleDashboardRelatorio}class="bg"> <img  className="fotografia" src={clientes} alt="Cadastro de Clientes" srcset="" /></div>
     <div class="blob"></div>
 </div>
 

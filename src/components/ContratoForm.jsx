@@ -1,126 +1,86 @@
+
 import React, { useState } from 'react';
+import { cadastrarContratoAlta, cadastrarContratoBaixa } from '../services/ContratoService';
 
-function ContratoForm() {
-  const [contrato, setContrato] = useState({
-    idCliente: '',
-    nomeCliente: '',
-    dataInicio: '',
-    valorServico: '',
-    desconto: '',
-    prioridadeAtendimento: 'alta', 
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContrato((prevContrato) => ({
-      ...prevContrato,
-      [name]: value,
-    }));
-  };
+const ContratoForm = () => {
+  const [cpfCliente, setCpfCliente] = useState('');
+  const [valorServico, setValorServico] = useState('');
+  const [prioridadeAtendimento, setPrioridadeAtendimento] = useState('Alta');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const apiUrl =
-      contrato.prioridadeAtendimento === 'alta'
-        ? 'http://localhost:8080/api/contratos/alta'
-        : 'http://localhost:8080/api/contratos/baixa';
+    setIsSubmitting(true);
+    setError('');
+
+    const contrato = {
+      cpfCliente,
+      valorServico: parseFloat(valorServico),
+      prioridadeAtendimento,
+      dataInicio: new Date(),
+    };
 
     try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          idCliente: contrato.idCliente,
-          nomeCliente: contrato.nomeCliente,
-          dataInicio: contrato.dataInicio,
-          valorServico: parseFloat(contrato.valorServico),
-          desconto: parseFloat(contrato.desconto),
-          prioridadeAtendimento: contrato.prioridadeAtendimento,
-        }),
-      });
-      if (response.ok) {
-        alert('Contrato cadastrado com sucesso!');
-        setContrato({
-          idCliente: '',
-          nomeCliente: '',
-          dataInicio: '',
-          valorServico: '',
-          desconto: '',
-          prioridadeAtendimento: 'alta',
-        });
+      let response;
+      if (prioridadeAtendimento === 'Alta') {
+        response = await cadastrarContratoAlta(contrato);
       } else {
-        alert('Erro ao cadastrar contrato.');
+        response = await cadastrarContratoBaixa(contrato);
       }
-    } catch (error) {
-      console.error('Erro ao conectar com o backend:', error);
+
+      if (response) {
+        alert('Contrato cadastrado com sucesso!');
+ 
+        setCpfCliente('');
+        setValorServico('');
+      }
+    } catch (err) {
+      setError('Erro ao cadastrar contrato. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h2>Cadastrar Contrato</h2>
-      <div>
-        <label>ID Cliente:</label>
-        <input
-        placeholder='ID do Cliente'
-          type="number"
-          name="idCliente"
-          value={contrato.idCliente}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Nome Cliente:</label>
-        <input
-        placeholder='Nome do Cliente'
-          type="text"
-          name="nomeCliente"
-          value={contrato.nomeCliente}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Data Início:</label>
-        <input
-        placeholder='Data de início'
-          type="date"
-          name="dataInicio"
-          value={contrato.dataInicio}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Valor Serviço:</label>
-        <input
-        placeholder='Valor do Serviço'
-          type="number"
-          name="valorServico"
-          value={contrato.valorServico}
-          onChange={handleChange}
-          required
-        />
-      </div>
-        
-      <div>
-        <label>Prioridade:</label>
-        <select
-      
-          name="prioridadeAtendimento"
-          value={contrato.prioridadeAtendimento}
-          onChange={handleChange}
-        >
-          <option value="alta">Alta</option>
-          <option value="baixa">Baixa</option>
-        </select>
-      </div>
-      <button type="submit">Cadastrar</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>CPF Cliente:</label>
+          <input
+            type="text"
+            value={cpfCliente}
+            onChange={(e) => setCpfCliente(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Valor do Serviço:</label>
+          <input
+            type="number"
+            value={valorServico}
+            onChange={(e) => setValorServico(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Prioridade de Atendimento:</label>
+          <select
+            value={prioridadeAtendimento}
+            onChange={(e) => setPrioridadeAtendimento(e.target.value)}
+          >
+            <option value="Alta">Alta</option>
+            <option value="Baixa">Baixa</option>
+          </select>
+        </div>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Cadastrando...' : 'Cadastrar Contrato'}
+        </button>
+      </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+    </div>
   );
-}
+};
 
 export default ContratoForm;

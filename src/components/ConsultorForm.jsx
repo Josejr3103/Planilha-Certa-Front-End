@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import { cadastrarConsultorFinanceiro, cadastrarConsultorGestao, cadastrarConsultorTI } from "../api/consultorApi";
+import ContratoForm from "./ContratoForm";
+import { useNavigate } from "react-router-dom";
+
+
 
 const ConsultorForm = () => {
   const [nome, setNome] = useState("");
   const [especializacao, setEspecializacao] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleContratoForm = () => {
+      navigate("/contrato/cadastro");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +23,7 @@ const ConsultorForm = () => {
       setError("Todos os campos são obrigatórios!");
       return;
     }
+  
 
     const consultor = { nomeConsultor: nome, especializacao };
 
@@ -61,7 +72,7 @@ const ConsultorForm = () => {
           </select>
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button className="buttona" type="submit">Cadastrar</button>
+        <button onClick={handleContratoForm} className="buttona" type="submit">Cadastrar</button>
       </form>
     </div>
   );

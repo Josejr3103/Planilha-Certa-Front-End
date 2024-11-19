@@ -1,57 +1,28 @@
-import axios from 'axios';
 
+import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/clientes";
+const API_URL = "http://localhost:8080/api/clientes";
 
-
-export const cadastrarClientePadrao = async (cliente) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/padrao`, cliente);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao cadastrar cliente padrão:', error);
-    throw error;
+class ClienteService {
+  cadastrarClientePadrao(cliente) {
+    return axios.post(`${API_URL}/padrao`, cliente);
   }
-};
 
-
-export const cadastrarClienteVip = async (cliente) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/vip`, cliente);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao cadastrar cliente VIP:', error);
-    throw error;
+  cadastrarClienteVip(cliente) {
+    return axios.post(`${API_URL}/vip`, cliente);
   }
-};
 
-
-export const listarClientes = async () => {
-  try {
-    const response = await axios.get(BASE_URL);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao listar clientes:', error);
-    throw error;
+  listarClientes() {
+    return axios.get(API_URL);
   }
-};
 
-
-export const editarCliente = async (idCliente, cliente) => {
-  try {
-    await axios.put(`${BASE_URL}/${idCliente}`, cliente);
-  } catch (error) {
-    console.error('Erro ao editar cliente:', error);
-    throw error;
+  editarCliente(id, cliente) {
+    return axios.put(`${API_URL}/${id}`, cliente);
   }
-};
 
-
-export const excluirCliente = async (idCliente) => {
-  try {
-    await axios.delete(`${BASE_URL}/${idCliente}`);
-  } catch (error) {
-    console.error('Erro ao excluir cliente:', error);
-    throw error;
+  excluirCliente(id) {
+    return axios.delete(`${API_URL}/${id}`);
   }
-};
+}
+
+export default new ClienteService();

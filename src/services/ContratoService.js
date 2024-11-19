@@ -1,54 +1,40 @@
 
-import axios from "axios";
+const API_URL = 'http://localhost:8080/api/contratos';
 
-const API_URL = "http://localhost:8080/api/contratos";
-
-export const listarContratos = async () => {
+export const cadastrarContratoAlta = async (contrato) => {
   try {
-    const response = await axios.get(API_URL);
-    return response.data;
+    const response = await fetch(`${API_URL}/alta`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contrato),
+    });
+    if (!response.ok) {
+      throw new Error('Erro ao cadastrar contrato');
+    }
+    return await response.json();
   } catch (error) {
-    console.error("Erro ao listar contratos", error);
+    console.error(error);
     throw error;
   }
 };
 
-export const cadastrarContratoPriorAlta = async (contrato) => {
+export const cadastrarContratoBaixa = async (contrato) => {
   try {
-    const response = await axios.post(`${API_URL}/alta`, contrato);
-    return response.data;
+    const response = await fetch(`${API_URL}/baixa`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contrato),
+    });
+    if (!response.ok) {
+      throw new Error('Erro ao cadastrar contrato');
+    }
+    return await response.json();
   } catch (error) {
-    console.error("Erro ao cadastrar contrato (prioridade alta)", error);
-    throw error;
-  }
-};
-
-export const cadastrarContratoPriorBaixa = async (contrato) => {
-  try {
-    const response = await axios.post(`${API_URL}/baixa`, contrato);
-    return response.data;
-  } catch (error) {
-    console.error("Erro ao cadastrar contrato (prioridade baixa)", error);
-    throw error;
-  }
-};
-
-export const editarContrato = async (id, contrato) => {
-  try {
-    const response = await axios.put(`${API_URL}/${id}`, contrato);
-    return response.data;
-  } catch (error) {
-    console.error("Erro ao editar contrato", error);
-    throw error;
-  }
-};
-
-export const excluirContrato = async (id) => {
-  try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Erro ao excluir contrato", error);
+    console.error(error);
     throw error;
   }
 };

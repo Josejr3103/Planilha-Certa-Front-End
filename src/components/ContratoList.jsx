@@ -24,7 +24,7 @@ function ContratoList() {
       });
       if (response.ok) {
         alert('Contrato excluído com sucesso!');
-        fetchContratos(); // Atualiza a lista
+        fetchContratos(); 
       } else {
         alert('Erro ao excluir contrato.');
       }
@@ -47,7 +47,7 @@ function ContratoList() {
                 <strong>Nome:</strong> {contrato.nomeCliente} -{' '}
                 <strong>Valor Líquido:</strong> {contrato.valorLiquido}
               </p>
-              <button onClick={() => handleDelete(contrato.idContrato)}>Excluir</button>
+             
             </li>
           ))
         )}
