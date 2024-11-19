@@ -52,14 +52,19 @@ const EtapasList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Lista de Etapas</h2>
+    <div className="container">
+  
       <table border="1">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nome</th>
-            <th>Descrição</th>
+            <th>Status</th>
+            
+            <th>Faturamento</th>
+            <th>Pagamento Etapa 1</th>
+            <th>Pagamento Etapa 2</th>
+            <th>Pagamento Etapa 3</th>
+            <th>Pagamento Final</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -73,7 +78,14 @@ const EtapasList = () => {
               <tr key={etapa.idEtapa}>
                 <td>{etapa.idEtapa}</td>
                 <td>{etapa.nome}</td>
-                <td>{etapa.descricao}</td>
+           
+                <td>{etapa.faturamento}</td>
+                <td>{etapa.liquidoET1}</td>
+                <td>{etapa.liquidoET2}</td>
+                <td>{etapa.liquidoET3}</td>
+                <td>{etapa.liquido}</td>
+                
+
                 <td>
                   <button onClick={() => handleEditarImplementacao(etapa.idEtapa)}>
                     Implementação
