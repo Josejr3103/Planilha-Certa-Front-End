@@ -24,9 +24,14 @@ const EtapasForm = () => {
   };
 
   return (
-    <div>
-      <h2>Cadastrar Nova Etapa</h2>
-      <button onClick={handleCadastrar}>Cadastrar Etapa Análise Inicial</button>
+    <div className="containere">
+      <h2 className="titulo-re">Cadastrar Nova Etapa</h2>
+      
+<div>
+    <button class="btt" onClick={handleCadastrar}><i class="animation"></i>Cadastrar Etapa Análise Inicial<i class="animation"></i>
+    </button>
+</div>
+
     </div>
   );
 };

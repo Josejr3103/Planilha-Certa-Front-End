@@ -81,21 +81,21 @@ const EtapasList = () => {
                 <td>{etapa.nome}</td>
            
                 <td>{etapa.faturamento}</td>
-                <td>{etapa.liquidoET1}</td>
-                <td>{etapa.liquidoET2}</td>
-                <td>{etapa.liquidoET3}</td>
-                <td>{etapa.liquido}</td>
+                <td>{etapa.liquidoET1} R$</td>
+                <td>{etapa.liquidoET2} R$</td>
+                <td>{etapa.liquidoET3} R$</td>
+                <td>{etapa.liquido} R$</td>
                 
 
                 <td>
-                  <button  onClick={() => handleEditarImplementacao(etapa.idEtapa)}>
+                  <button className="edit"  onClick={() => handleEditarImplementacao(etapa.idEtapa)}>
                     Implementação
                   </button>
-                  <button onClick={() => handleEditarRevisaoFinal(etapa.idEtapa)}>
+                  <button className="edit" onClick={() => handleEditarRevisaoFinal(etapa.idEtapa)}>
                     Revisão Final
                   </button>
-                  <br />
-                  <button onClick={() => handleEditarConclusao(etapa.idEtapa)}>
+             
+                  <button className="edit" onClick={() => handleEditarConclusao(etapa.idEtapa)}>
                     Conclusão
                   </button>
                 </td>

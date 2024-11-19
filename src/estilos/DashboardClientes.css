@@ -616,6 +616,82 @@ h3{
   transition-duration: .3s;
   box-shadow: 2px 2px 0px rgb(140, 32, 212);
 }
+.edit {
+  padding: 0px 20px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: rgb(113, 215, 255);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: rgb(77, 195, 241);
+  transition: 500ms;
+  color: white;
+ }
+ 
+.edit:hover{
+  background: white;
+  color: black;
+}
+ 
+ .edit .texte {
+
+  transform: translateX(0px);
+  color: white;
+  font-weight: bold;
+ }
+
+ 
+ .edit:focus {
+  outline: none;
+ }
+
+
+.btt {
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #40B3A2;
+  min-width: 400px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+  padding: 16px 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 500ms;
+}
+
+.btt:hover {
+  opacity: .95;
+}
+
+.btt .animation {
+  border-radius: 100%;
+  animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+  }
+}
+ 
+ 
 
 .delete {
   padding: 0px 20px;

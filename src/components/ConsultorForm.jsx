@@ -33,8 +33,7 @@ const ConsultorForm = () => {
       alert("Consultor cadastrado com sucesso!");
 
  
-      navigate("/contrato/cadastro");
-
+     
     } catch (err) {
       setError("Erro ao cadastrar consultor");
     }
