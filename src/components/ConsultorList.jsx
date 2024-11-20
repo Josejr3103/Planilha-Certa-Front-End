@@ -60,7 +60,7 @@ const ConsultorList = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='containere'>
       
      
         {error && <p style={{ color: 'red' }}>{error}</p>}

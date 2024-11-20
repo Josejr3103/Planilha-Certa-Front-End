@@ -82,7 +82,7 @@ function ClienteList() {
   };
 
   return (
-    <div className='container'>
+    <div className='containere'>
 
 
       {clientes.length > 0 ? (

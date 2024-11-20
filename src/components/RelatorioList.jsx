@@ -54,7 +54,7 @@ const RelatorioList = () => {
      
 
       {relatorios.length > 0 ? (
-        <table className="tabela-re" border="1" style={{ marginRight:"1200px", marginTop: "20px", width: "100%" }}>
+        <table className="tabela-re"  style={{ marginRight:"1200px", marginTop: "20px", width: "100%" }}>
           <thead>
             <tr>
               <th>Nome do Cliente</th>
